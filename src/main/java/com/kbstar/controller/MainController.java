@@ -86,7 +86,7 @@ public class MainController {
                 // 성공한 로그인 정보는 session에 loginadm라는 이름으로 adm에 넣어주기.
                 // 기능 : session 에 넣어주면, 00초 동안 로그인 유지 가능.**
                 // session에 담은 정보도, jsp에서 loginadm라는 이름으로 정보 끄집어내기 가능하다.
-                session.setMaxInactiveInterval(100000);
+                session.setMaxInactiveInterval(100000000);
                 session.setAttribute("loginadm", adm);
                 log.info(adm.toString());
 
@@ -128,4 +128,9 @@ public class MainController {
         return "redirect:/adminfo?id=" + adm.getId();
     }
 
+    @RequestMapping("/websocket")
+    public String websocket(Model model){
+        model.addAttribute("center",  "websocket");
+        return "index";
+    }
 }
