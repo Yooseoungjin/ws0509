@@ -27,7 +27,7 @@
 
 <script>
     let websocket = {
-        id:null, /*관리자의 아디디*/
+        id:null, /*관리자의 아이디*/
         stompClient:null, /*커넥션 정보*/
         init:function(){
             this.id = $('#adm_id').text(); /*관리자id가져오기*/
@@ -49,7 +49,7 @@
         },
         connect:function(){
             var sid = this.id;
-            var socket = new SockJS('http://127.0.0.1:8088/ws'); /*웹소켓의 접속정보*/
+            var socket = new SockJS('${adminserver}/ws'); /*웹소켓의 접속정보*/
             this.stompClient = Stomp.over(socket);
 
             this.stompClient.connect({}, function(frame) {
